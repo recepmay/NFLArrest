@@ -42,3 +42,5 @@ Since I had very limited time I had some things in mind that I couldn't implemen
 - I could use pipes and filters manipulate data in order to make data manipulation better. I used filters but there are some other cases it can be used which I skipped.
 
 - Chart is not working properly at the moment. After selecting a few years in a row, chart is acting abnormally. I couldn't have more time to investigate the reason so I would test and find other relevant bugs if I had more time.
+
+- In chart view I could use month names instead of only the number of the month if I had time to do it in order to have a meaningful information for the users.
