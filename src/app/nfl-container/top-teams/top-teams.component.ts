@@ -10,7 +10,7 @@ import { TeamModel } from '../../shared/team.model';
 })
 export class TopTeamsComponent implements OnInit, AfterViewInit {
 
-  dataSource: MatTableDataSource<TeamModel[]>;
+  dataSource: MatTableDataSource<TeamModel>;
   displayedColumns = ['Team', 'Team Preffered Name', 'Team Name', 'Team City',
     'Team Conference', 'Team Conference Division', 'Team Logo ID', 'Arrest count'];
   values = ['Team', 'Team_preffered_name', 'Team_name', 'Team_city',
@@ -27,7 +27,7 @@ export class TopTeamsComponent implements OnInit, AfterViewInit {
     this.dataService.getTeams()
       .subscribe(response => {
         if (response) {
-          this.dataSource = new MatTableDataSource(response);
+          this.dataSource = new MatTableDataSource<TeamModel>(response);
           this.spinnerFlag = true;
         }
       }, error => console.log('Error occurred while fetching teams!'));
