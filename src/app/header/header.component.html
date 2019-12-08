@@ -1,0 +1,9 @@
+
+<div class="header">
+  <button mat-button [matMenuTriggerFor]="menu" class="buttonStyle"> NFL Stats </button>
+  <mat-menu #menu="matMenu" >
+    <button *ngFor="let item of menuItems; let i = index" (click)="jumpToSelected(i)" mat-menu-item style="background-color: black">
+      {{ item }}
+    </button>
+  </mat-menu>
+</div>

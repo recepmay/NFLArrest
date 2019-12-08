@@ -1,0 +1,33 @@
+<h1 class="title"> TIMELINE </h1>
+
+<div class="selectArea">
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input type="text" placeholder="Pick one crime" aria-label="Number" matInput [formControl]="myControl"
+             [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)='selectCrime($event.option.value)'>
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option" style="background-color: black">
+          {{ option }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+</div>
+
+<div class="selectArea">
+  <form class="example-form">
+    <mat-form-field>
+      <mat-label>Select Year</mat-label>
+      <mat-select (selectionChange)="selectYear($event.value)">
+        <mat-option *ngFor="let data of years" [value]="data">
+          {{ data }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>
+
+<div>
+  <canvas id="myChart" width="400" height="400"></canvas>
+</div>
+

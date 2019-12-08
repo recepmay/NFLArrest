@@ -1,0 +1,32 @@
+<div>
+  <mat-form-field class="filter">
+    <input matInput (keyup)="filterResults($event.target.value)" placeholder="Type key words to filter">
+  </mat-form-field>
+  <h1 class="title"> CRIMES </h1>
+</div>
+
+  <mat-progress-spinner *ngIf="!spinnerFlag" mode="indeterminate"></mat-progress-spinner>
+
+<div>
+  <mat-table [dataSource]="dataSource" style="background-color: black;" matSort>
+    <div *ngFor="let property of displayedColumns; let i = index">
+      <ng-container [matColumnDef]="property" >
+        <mat-header-cell *matHeaderCellDef mat-sort-header> {{ property }}</mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{ item[values[i]] }}</mat-cell>
+      </ng-container>
+    </div>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator
+                 [length]="dataSource.length"
+                 [pageSize]="dataSource.pageSize"
+                 [pageSizeOptions]="[10, 20, 50, 100 ]"
+                 class="paginator"
+  ></mat-paginator>
+</div>
+
+
+
