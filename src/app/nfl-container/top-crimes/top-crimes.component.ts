@@ -10,7 +10,7 @@ import { CrimeModel } from '../../shared/crime.model';
 })
 export class TopCrimesComponent implements OnInit, AfterViewInit {
 
-  dataSource: MatTableDataSource<CrimeModel[]>;
+  dataSource: MatTableDataSource<CrimeModel>;
   displayedColumns = ['Category', 'Arrest Count'];
   values = ['Category', 'arrest_count'];
 
@@ -25,7 +25,7 @@ export class TopCrimesComponent implements OnInit, AfterViewInit {
     this.dataService.getCrimes()
       .subscribe(response => {
         if (response) {
-          this.dataSource = new MatTableDataSource(response);
+          this.dataSource = new MatTableDataSource<CrimeModel>(response);
           this.spinnerFlag = true;
         }
       }, error => console.log('Error occurred while fetching crimes!'));
