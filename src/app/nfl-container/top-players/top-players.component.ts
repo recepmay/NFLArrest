@@ -10,7 +10,7 @@ import { PlayerModel } from '../../shared/player.model';
 })
 export class TopPlayersComponent implements OnInit, AfterViewInit {
 
-  dataSource: MatTableDataSource<PlayerModel[]>;
+  dataSource: MatTableDataSource<PlayerModel>;
   displayedColumns = ['Name', 'Team', 'Team Name', 'Team City', 'Position', 'Arrest Count'];
   values = ['Name', 'Team', 'Team_name', 'Team_city', 'Position', 'arrest_count'];
 
@@ -25,7 +25,7 @@ export class TopPlayersComponent implements OnInit, AfterViewInit {
     this.dataService.getPlayers()
       .subscribe(response => {
         if (response) {
-          this.dataSource = new MatTableDataSource(response);
+          this.dataSource = new MatTableDataSource<PlayerModel>(response);
           this.spinnerFlag = true;
         }
       }, error => console.log('Error occurred while fetching players!'));
