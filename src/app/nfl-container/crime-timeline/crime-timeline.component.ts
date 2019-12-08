@@ -17,7 +17,7 @@ export class CrimeTimelineComponent implements OnInit {
 
   private crimes: CrimeModel[];
   private crimeNames: string[];
-  private timelineData: any[];
+  private timelineData: any[] = [];
   private years: any[] = [];
 
   myControl = new FormControl();
@@ -46,7 +46,7 @@ export class CrimeTimelineComponent implements OnInit {
       .subscribe(response => {
         if (response) {
           // group all data by year
-          this.timelineData = response.reduce((groups, item) => ({
+          this.timelineData = response.reduce<any>((groups, item) => ({
             ...groups,
             [item.Year]: [...(groups[item.Year] || []), item]
           }), {});
@@ -65,9 +65,9 @@ export class CrimeTimelineComponent implements OnInit {
   selectYear(year) {
     let ctx;
     let BarChart;
-    let selected = this.timelineData[year];
-    let labels = selected.map( item => item.Month);
-    let data = selected.map( item => item.arrest_count);
+    const selected = this.timelineData[year];
+    const labels = selected.map( item => item.Month);
+    const data = selected.map( item => item.arrest_count);
 
     ctx = document.getElementById('myChart');
     BarChart = new Chart(ctx, {
