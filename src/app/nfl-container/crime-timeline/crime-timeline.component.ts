@@ -103,7 +103,8 @@ export class CrimeTimelineComponent implements OnInit {
               beginAtZero: true
             }
           }]
-        }
+        },
+		responsive: false
       }
     });
   }
